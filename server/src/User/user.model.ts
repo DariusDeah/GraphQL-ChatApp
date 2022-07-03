@@ -1,5 +1,22 @@
-import { prop, getModelForClass, pre, index } from "@typegoose/typegoose";
+import {
+  prop,
+  getModelForClass,
+  pre,
+  index,
+  types,
+} from "@typegoose/typegoose";
 import bcrypt from "bcrypt";
+
+interface QueryHelpers {
+  findByUID: types.AsQueryMethod<typeof findByUID>;
+}
+
+function findByUID(
+  this: types.QueryHelperThis<typeof User, QueryHelpers>,
+  uid: string
+) {
+  return this.find({ uid });
+}
 
 @pre<User>("save", async function () {
   if (!this.isModified("password")) {
@@ -12,6 +29,7 @@ import bcrypt from "bcrypt";
   this.password = hashedPassword;
 })
 @index({ email: 1 })
+@index({ uid: 1 })
 class User {
   @prop()
   uid: string;
