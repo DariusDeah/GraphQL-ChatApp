@@ -2,12 +2,23 @@ import { UserService } from "./user.service";
 import { IUser } from "./user.type";
 
 class UserResolver {
-  userService: UserService;
+  private userService: UserService;
   constructor() {
     this.userService = new UserService();
   }
+  async createUser(input: {
+    name: string;
+    email: string;
+    password: string;
+    googleId: string;
+  }): Promise<IUser> {
+    const createdUser = await this.userService.createUser(input);
+    return createdUser;
+  }
+
   async findByUID(uid: string): Promise<IUser> {
-    return await this.userService.findByUID(uid);
+    const user = await this.userService.findByUID(uid);
+    return user;
   }
 }
 export const userResolver: UserResolver = new UserResolver();
