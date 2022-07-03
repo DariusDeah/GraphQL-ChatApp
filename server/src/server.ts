@@ -1,20 +1,18 @@
 import mongoose from "mongoose";
 import { app } from "./app";
-import dotenv from "dotenv";
 import colors from "colors";
-
-dotenv.config({ path: "../config.env", debug: true });
+import { API_CONFIG, DB_CONFIG } from "./config";
 
 mongoose
-  .connect(process.env.DB_CONNECTION as string)
+  .connect(DB_CONFIG.connection_string as string)
   .then(() => {
-    console.log("DB connection established".bgGreen);
+    console.log(colors.bold.blue("DB connection established"));
   })
   .catch((err) => {
     console.log(colors.red("DB connection failed"));
   });
 
-app.listen(5000, () => {
+app.listen(API_CONFIG.PORT, () => {
   console.log(
     colors.bold.green(`server running at http://localhost:5000/graphql`)
   );
