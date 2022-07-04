@@ -23,7 +23,10 @@ export class UserService {
     return user;
   }
 
-  async login(input: { email: string; password: string }) {
+  async login(input: {
+    email: string;
+    password: string;
+  }): Promise<HydratedDocument<IUser>> {
     const user = await UserModel.findOne({ email: input.email });
 
     if (!user) {
