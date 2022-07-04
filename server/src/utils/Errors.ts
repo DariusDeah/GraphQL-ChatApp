@@ -9,3 +9,12 @@ export class NotFoundError extends GraphQLError {
     Object.defineProperty(this, "name", { value: "NotFoundError" });
   }
 }
+
+export class BadRequestError extends GraphQLError {
+  message: string;
+  statusCode: number;
+  constructor(errMessage?: string) {
+    super(errMessage ?? "Bad request, try again later!");
+    Object.defineProperty(this, "name", { value: "BadRequestError" });
+  }
+}
