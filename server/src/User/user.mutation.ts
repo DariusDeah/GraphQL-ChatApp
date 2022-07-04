@@ -23,5 +23,16 @@ export const UserMutation = new GraphQLObjectType({
         });
       },
     },
+    login: {
+      type: UserType,
+      args: {
+        email: { type: GraphQLString! },
+        password: { type: GraphQLString! },
+      },
+      async resolve(parent, args) {
+        const { email, password } = args;
+        return await userResolver.login({ email, password });
+      },
+    },
   },
 });

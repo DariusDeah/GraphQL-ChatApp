@@ -20,5 +20,10 @@ class UserResolver {
     const user = await this.userService.findByUID(uid);
     return user;
   }
+
+  async login(input: { email: string; password: string }): Promise<IUser> {
+    const user = await this.userService.login(input);
+    return user;
+  }
 }
 export const userResolver: UserResolver = new UserResolver();
