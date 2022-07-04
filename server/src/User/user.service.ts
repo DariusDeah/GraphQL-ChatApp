@@ -10,7 +10,7 @@ export class UserService {
     email: string;
     password: string;
     googleId: string;
-  }) {
+  }): Promise<HydratedDocument<IUser>> {
     const createdUser = await UserModel.create(input);
     return createdUser;
   }
