@@ -23,6 +23,7 @@ export const UserMutation = new GraphQLObjectType({
         });
       },
     },
+
     login: {
       type: UserType,
       args: {
