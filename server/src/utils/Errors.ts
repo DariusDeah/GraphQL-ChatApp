@@ -18,3 +18,14 @@ export class BadRequestError extends GraphQLError {
     Object.defineProperty(this, "name", { value: "BadRequestError" });
   }
 }
+
+export class UnAuthorizedError extends GraphQLError {
+  message: string;
+  statusCode: number;
+  constructor(errMessage?: string) {
+    super(errMessage ?? "Bad request, try again later!");
+    Object.defineProperty(this, "name", {
+      value: "UnAuthorized Action, please authenticate and try again!",
+    });
+  }
+}
