@@ -12,7 +12,9 @@ export class UserService {
     password: string;
     googleId: string;
   }): Promise<HydratedDocument<IUser>> {
+    input.email = input.email.toLowerCase();
     const userData = { ...input, uid: uuid() };
+
     const createdUser = await UserModel.create(userData);
     return createdUser;
   }
@@ -29,8 +31,7 @@ export class UserService {
     email: string;
     password: string;
   }): Promise<HydratedDocument<IUser>> {
-    const user = await UserModel.findOne({ email: input.email });
-    console.log(input.email, input.password, user);
+    const user = await UserModel.findOne({ email: input.email.toLowerCase() });
     if (!user) {
       throw new GraphQLError("user not found");
     }
