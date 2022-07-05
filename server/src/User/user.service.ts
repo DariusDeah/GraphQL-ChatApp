@@ -7,14 +7,13 @@ import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 export class UserService {
   async createUser(input: {
-    uid: string;
     name: string;
     email: string;
     password: string;
     googleId: string;
   }): Promise<HydratedDocument<IUser>> {
-    input.uid = uuid();
-    const createdUser = await UserModel.create(input);
+    const userData = { ...input, uid: uuid() };
+    const createdUser = await UserModel.create(userData);
     return createdUser;
   }
 
