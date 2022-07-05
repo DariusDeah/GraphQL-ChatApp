@@ -10,16 +10,17 @@ app.use(cors());
 
 //routes
 app.use(
-  "/graphql",
-  graphqlHTTP({
-    graphiql: true,
-    schema: UserSchema,
-  })
-);
-app.use(
   cookieSession({
     name: "session",
     maxAge: 24 * 60 * 1000,
     keys: [COOKIE_CONFIG.secret1, COOKIE_CONFIG.secret2],
+  })
+);
+
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    graphiql: true,
+    schema: UserSchema,
   })
 );

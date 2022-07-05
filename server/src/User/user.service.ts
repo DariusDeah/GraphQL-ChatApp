@@ -4,13 +4,16 @@ import { UserModel } from "./user.model";
 import { IUser } from "./user.type";
 import { fieldsHider } from "../helpers/fieldsHider";
 import bcrypt from "bcrypt";
+import { v4 as uuid } from "uuid";
 export class UserService {
   async createUser(input: {
+    uid: string;
     name: string;
     email: string;
     password: string;
     googleId: string;
   }): Promise<HydratedDocument<IUser>> {
+    input.uid = uuid();
     const createdUser = await UserModel.create(input);
     return createdUser;
   }
@@ -28,7 +31,7 @@ export class UserService {
     password: string;
   }): Promise<HydratedDocument<IUser>> {
     const user = await UserModel.findOne({ email: input.email });
-
+    console.log(input.email, input.password, user);
     if (!user) {
       throw new GraphQLError("user not found");
     }
