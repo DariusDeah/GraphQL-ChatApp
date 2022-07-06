@@ -20,7 +20,7 @@ export class UserService {
   }
 
   async findByUID(uid: string): Promise<HydratedDocument<IUser>> {
-    const user = await UserModel.find().findByUID(uid);
+    const user = await UserModel.findOne({ uid });
     if (!user) {
       throw new GraphQLError("user not found");
     }

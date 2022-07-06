@@ -1,3 +1,5 @@
+import { GraphQLError } from "graphql/error/GraphQLError";
+import { Context } from "../interfaces/Contex.interface";
 import { UserService } from "./user.service";
 import { IUser } from "./user.type";
 
@@ -6,6 +8,7 @@ class UserResolver {
   constructor() {
     this.userService = new UserService();
   }
+
   async createUser(input: {
     name: string;
     email: string;
@@ -16,7 +19,10 @@ class UserResolver {
     return createdUser;
   }
 
-  async findByUID(uid: string): Promise<IUser> {
+  async findByUID(
+    uid: string,
+    context: Context
+  ): Promise<IUser | GraphQLError> {
     const user = await this.userService.findByUID(uid);
     return user;
   }

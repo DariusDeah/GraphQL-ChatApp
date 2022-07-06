@@ -2,7 +2,7 @@ import { GraphQLError } from "graphql/error/GraphQLError";
 
 export class NotFoundError extends GraphQLError {
   message: string;
-  statusCode: number;
+  statusCode: number = 404;
   constructor(errMessage?: string) {
     //if a message is not provided then the default message will be used
     super(errMessage ?? "Resource Not Found!");
@@ -12,7 +12,7 @@ export class NotFoundError extends GraphQLError {
 
 export class BadRequestError extends GraphQLError {
   message: string;
-  statusCode: number;
+  statusCode: number = 400;
   constructor(errMessage?: string) {
     super(errMessage ?? "Bad request, try again later!");
     Object.defineProperty(this, "name", { value: "BadRequestError" });
@@ -21,7 +21,7 @@ export class BadRequestError extends GraphQLError {
 
 export class UnAuthorizedError extends GraphQLError {
   message: string;
-  statusCode: number;
+  statusCode: number = 401;
   constructor(errMessage?: string) {
     super(
       errMessage ?? "UnAuthorized Action, please authenticate and try again!"
@@ -34,7 +34,7 @@ export class UnAuthorizedError extends GraphQLError {
 
 export class ForbiddenError extends GraphQLError {
   message: string;
-  statusCode: number;
+  statusCode: number = 403;
   constructor(errMessage?: string) {
     super(
       errMessage ??
