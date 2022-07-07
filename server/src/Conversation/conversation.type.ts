@@ -1,7 +1,7 @@
 import { GraphQLID, GraphQLList, GraphQLObjectType } from "graphql/type";
 import { UserType } from "../User/user.type";
 
-interface IConversation {
+export interface IConversation {
   uid: string;
   participants: string[];
 }
