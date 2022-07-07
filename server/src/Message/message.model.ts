@@ -15,6 +15,6 @@ export class Message {
   content: string;
 
   @prop({ required: true, ref: () => Conversation })
-  conversationId: Ref<Conversation>;
+  conversationUId: Ref<Conversation>;
 }
 export const MessageModel = getModelForClass<typeof Message>(Message);
