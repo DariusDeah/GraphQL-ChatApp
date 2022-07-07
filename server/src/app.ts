@@ -9,27 +9,16 @@ export const app: express.Application = express();
 
 app.use(cors());
 
-//routes
-// app.use(
-//   cookieSession({
-//     name: "session",
-//     maxAge: 24 * 60 * 1000,
-//     keys: [COOKIE_CONFIG.secret1, COOKIE_CONFIG.secret2],
-//   })
-// );
-
 app.use(
-  "/graphql",
-  // graphqlHTTP({
-  //   graphiql: true,
-  //   schema: UserSchema,
-  //   pretty: true,
-  //   context: (ctx: Context) => {
-  //     console.log("context hit");
-  //     return console.log(ctx.req);
-  //   },
-  // })
-  graphqlHTTP(async (req, res, graphQLParams) => ({
+  cookieSession({
+    name: "session",
+    maxAge: 24 * 60 * 1000,
+    keys: [COOKIE_CONFIG.secret1, COOKIE_CONFIG.secret2],
+  })
+);
+
+app.use("/graphql", (req, res, graphQLParams) => {
+  graphqlHTTP({
     schema: UserSchema,
     // rootValue: await someFunctionToGetRootValue(request),
     context: {
@@ -37,6 +26,12 @@ app.use(
       res,
       graphQLParams,
     },
+    customFormatErrorFn: (err) => {
+      return {
+        message: err.message,
+        // name: err.errName,
+      };
+    },
     graphiql: true,
-  }))
-);
+  })(req, res);
+});

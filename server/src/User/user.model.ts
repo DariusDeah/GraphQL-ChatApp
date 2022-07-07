@@ -30,7 +30,7 @@ function findByUID(
 })
 @index({ email: 1 })
 @index({ uid: 1 })
-class User {
+export class User {
   @prop()
   uid: string;
 

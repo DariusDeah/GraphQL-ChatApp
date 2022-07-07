@@ -9,7 +9,7 @@ mongoose
     console.log(colors.bold.blue("DB connection established"));
   })
   .catch((err) => {
-    console.log(colors.red("DB connection failed"));
+    console.log(colors.red("DB connection failed:"), err);
   });
 
 app.listen(API_CONFIG.PORT, () => {

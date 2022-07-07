@@ -5,6 +5,8 @@ import { IUser } from "./user.type";
 import { fieldsHider } from "../helpers/fieldsHider";
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
+import { BadRequestError, NotFoundError } from "../utils/Errors";
+
 export class UserService {
   async createUser(input: {
     name: string;
@@ -22,7 +24,7 @@ export class UserService {
   async findByUID(uid: string): Promise<HydratedDocument<IUser>> {
     const user = await UserModel.findOne({ uid });
     if (!user) {
-      throw new GraphQLError("user not found");
+      throw new NotFoundError("user not found by that id");
     }
     return user;
   }
@@ -33,13 +35,13 @@ export class UserService {
   }): Promise<HydratedDocument<IUser>> {
     const user = await UserModel.findOne({ email: input.email.toLowerCase() });
     if (!user) {
-      throw new GraphQLError("user not found");
+      throw new NotFoundError("user not found");
     }
 
     const isValidPassword = await bcrypt.compare(input.password, user.password);
 
     if (!isValidPassword) {
-      throw new GraphQLError("invalid login");
+      throw new BadRequestError("invalid login");
     }
 
     //hide password before returning
