@@ -1,10 +1,11 @@
 import { GraphQLError } from "graphql";
-import { HydratedDocument } from "mongoose";
+import mongoose, { HydratedDocument } from "mongoose";
 import { User, UserModel } from "./user.model";
 import { fieldsHider } from "../helpers/fieldsHider";
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 import { BadRequestError, NotFoundError } from "../utils/Errors";
+import * as MUUID from "uuid-mongodb";
 
 export class UserService {
   async createUser(input: {
@@ -14,14 +15,14 @@ export class UserService {
     googleId: string;
   }): Promise<HydratedDocument<User>> {
     input.email = input.email.toLowerCase();
-    const userData = { ...input, uid: uuid() };
-
+    const userData = { ...input };
     const createdUser = await UserModel.create(userData);
+
     return createdUser;
   }
 
   async findByUID(uid: string): Promise<HydratedDocument<User>> {
-    const user = await UserModel.findOne({ uid });
+    const user = await UserModel.findOne({ uid: MUUID.from(uid) });
     if (!user) {
       throw new NotFoundError("user not found by that id");
     }
