@@ -1,7 +1,6 @@
 import { GraphQLError } from "graphql";
 import { HydratedDocument } from "mongoose";
-import { UserModel } from "./user.model";
-import { IUser } from "./user.type";
+import { User, UserModel } from "./user.model";
 import { fieldsHider } from "../helpers/fieldsHider";
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
@@ -13,7 +12,7 @@ export class UserService {
     email: string;
     password: string;
     googleId: string;
-  }): Promise<HydratedDocument<IUser>> {
+  }): Promise<HydratedDocument<User>> {
     input.email = input.email.toLowerCase();
     const userData = { ...input, uid: uuid() };
 
@@ -21,7 +20,7 @@ export class UserService {
     return createdUser;
   }
 
-  async findByUID(uid: string): Promise<HydratedDocument<IUser>> {
+  async findByUID(uid: string): Promise<HydratedDocument<User>> {
     const user = await UserModel.findOne({ uid });
     if (!user) {
       throw new NotFoundError("user not found by that id");
@@ -32,7 +31,7 @@ export class UserService {
   async login(input: {
     email: string;
     password: string;
-  }): Promise<HydratedDocument<IUser>> {
+  }): Promise<HydratedDocument<User>> {
     const user = await UserModel.findOne({ email: input.email.toLowerCase() });
     if (!user) {
       throw new NotFoundError("user not found");

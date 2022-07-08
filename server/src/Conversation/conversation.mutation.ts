@@ -4,6 +4,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from "graphql/type";
+import { conversationResolver } from "./conversation.resolver";
 import { ConversationType } from "./conversation.type";
 
 export const ConversationMutation = new GraphQLObjectType({
@@ -12,7 +13,13 @@ export const ConversationMutation = new GraphQLObjectType({
     createConversation: {
       type: ConversationType,
       args: {
-        participants: { type: GraphQLList(GraphQLID)! },
+        participants: {
+          type: GraphQLList(GraphQLID)!,
+        },
+      },
+      async resolve(parent, args) {
+        const { participants } = args;
+        return await conversationResolver.createConversation(participants);
       },
     },
   },

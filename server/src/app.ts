@@ -5,6 +5,7 @@ import cors from "cors";
 import { COOKIE_CONFIG } from "./config";
 import cookieSession from "cookie-session";
 import { Context } from "./interfaces/Contex.interface";
+import { Schema } from "./index";
 export const app: express.Application = express();
 
 app.use(cors());
@@ -19,7 +20,7 @@ app.use(
 
 app.use("/graphql", (req, res, graphQLParams) => {
   graphqlHTTP({
-    schema: UserSchema,
+    schema: Schema,
     // rootValue: await someFunctionToGetRootValue(request),
     context: {
       req,

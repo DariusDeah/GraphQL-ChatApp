@@ -6,6 +6,7 @@ import {
   types,
 } from "@typegoose/typegoose";
 import bcrypt from "bcrypt";
+import mongoose from "mongoose";
 
 interface QueryHelpers {
   findByUID: types.AsQueryMethod<typeof findByUID>;
@@ -32,7 +33,7 @@ function findByUID(
 @index({ uid: 1 })
 export class User {
   @prop()
-  uid: string;
+  uid: mongoose.Types.ObjectId;
 
   @prop({ required: true })
   name: string;
