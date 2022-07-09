@@ -6,7 +6,7 @@ import {
   types,
 } from "@typegoose/typegoose";
 import bcrypt from "bcrypt";
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import * as MUUID from "uuid-mongodb";
 
 @pre<User>("save", async function () {
@@ -21,6 +21,9 @@ import * as MUUID from "uuid-mongodb";
 })
 @index({ email: 1 })
 export class User {
+  @prop()
+  id: mongoose.Types.ObjectId;
+
   @prop({ default: () => MUUID.v4() })
   uuid: mongoose.Types.Buffer;
 

@@ -4,8 +4,12 @@ import { Ref } from "@typegoose/typegoose/lib/types";
 import { Conversation } from "../Conversation/conversation.model";
 import { User } from "../User/user.model";
 import * as MUUID from "uuid-mongodb";
+import mongoose from "mongoose";
 
 export class Message {
+  @prop()
+  id: mongoose.Types.ObjectId;
+
   @prop({ default: () => MUUID.v4() })
   uuid: string;
 

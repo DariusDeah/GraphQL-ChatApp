@@ -5,6 +5,9 @@ import mongoose from "mongoose";
 import * as MUUID from "uuid-mongodb";
 
 export class Conversation {
+  @prop({ default: new mongoose.Types.ObjectId() })
+  id: mongoose.Types.ObjectId;
+
   @prop({ default: () => MUUID.v4() })
   uuid: mongoose.Types.Buffer;
 
