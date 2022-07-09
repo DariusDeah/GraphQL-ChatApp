@@ -1,7 +1,7 @@
 import { GraphQLID, GraphQLObjectType, GraphQLString } from "graphql";
 
 export interface IUser {
-  uid: string;
+  id: string;
   name: string;
   email: string;
   googleId?: string;
@@ -11,7 +11,7 @@ export interface IUser {
 export const UserType = new GraphQLObjectType<IUser>({
   name: "user",
   fields: () => ({
-    uid: { type: GraphQLID },
+    id: { type: GraphQLID },
     name: { type: GraphQLString! },
     email: { type: GraphQLString! },
     googleId: { type: GraphQLString },

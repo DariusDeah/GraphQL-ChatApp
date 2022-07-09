@@ -21,8 +21,8 @@ export class UserService {
     return createdUser;
   }
 
-  async findByUID(uid: string): Promise<HydratedDocument<User>> {
-    const user = await UserModel.findOne({ uid: MUUID.from(uid) });
+  async findByID(id: string): Promise<HydratedDocument<User>> {
+    const user = await UserModel.findById(id);
     if (!user) {
       throw new NotFoundError("user not found by that id");
     }

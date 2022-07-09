@@ -19,8 +19,8 @@ class UserResolver {
     return createdUser;
   }
 
-  async findByUID(uid: string, context: Context): Promise<User | GraphQLError> {
-    const user = await this.userService.findByUID(uid);
+  async findByID(id: string, context: Context): Promise<User | GraphQLError> {
+    const user = await this.userService.findByID(id);
     return user;
   }
 

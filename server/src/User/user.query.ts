@@ -10,11 +10,11 @@ export const UserRootQuery = new GraphQLObjectType({
   fields: {
     user: {
       type: UserType,
-      args: { uid: { type: GraphQLID! } },
+      args: { id: { type: GraphQLID! } },
       async resolve(parent, args, context) {
         try {
-          const { uid } = args;
-          return await userResolver.findByUID(uid, context);
+          const { id } = args;
+          return await userResolver.findByID(id, context);
         } catch (error) {
           return error;
         }

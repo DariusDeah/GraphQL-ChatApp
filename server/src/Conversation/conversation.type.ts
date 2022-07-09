@@ -9,7 +9,7 @@ export interface IConversation {
 export const ConversationType = new GraphQLObjectType<IConversation>({
   name: "Conversation",
   fields: () => ({
-    uid: { type: GraphQLID },
+    id: { type: GraphQLID },
     participants: { type: GraphQLList(UserType)! },
   }),
 });
