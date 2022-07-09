@@ -3,10 +3,11 @@ import { prop } from "@typegoose/typegoose/lib/prop";
 import { Ref } from "@typegoose/typegoose/lib/types";
 import { Conversation } from "../Conversation/conversation.model";
 import { User } from "../User/user.model";
+import * as MUUID from "uuid-mongodb";
 
 export class Message {
-  @prop({ required: true })
-  uid: string;
+  @prop({ default: () => MUUID.v4() })
+  uuid: string;
 
   @prop({ required: true, ref: () => User })
   sender: Ref<User>;

@@ -3,6 +3,7 @@ import { BadRequestError } from "../utils/Errors";
 import { CreateConversationInput } from "./conversation.inuptTypes";
 import { ConversationModel } from "./conversation.model";
 import { IConversation } from "./conversation.type";
+import * as MUUID from "uuid-mongodb";
 
 export class ConversationService {
   async createConversation(input: CreateConversationInput) {

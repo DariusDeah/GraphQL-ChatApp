@@ -1,17 +1,12 @@
 import { getModelForClass, index, pre, prop, Ref } from "@typegoose/typegoose";
 import { User } from "../User/user.model";
 import { v4 as uuid } from "uuid";
+import mongoose from "mongoose";
+import * as MUUID from "uuid-mongodb";
 
-@pre<Conversation>("save", async function () {
-  if (this.uid !== undefined) {
-    return;
-  }
-  this.uid = uuid();
-})
-@index({ uid: 1 })
 export class Conversation {
-  @prop()
-  uid: string;
+  @prop({ default: () => MUUID.v4() })
+  uuid: mongoose.Types.Buffer;
 
   @prop({ required: true, ref: () => User })
   participants: Ref<User>[];
