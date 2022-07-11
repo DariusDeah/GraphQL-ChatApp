@@ -14,6 +14,8 @@ mongoose
 
 app.listen(API_CONFIG.PORT, () => {
   console.log(
-    colors.bold.green(`server running at http://localhost:5000/graphql`)
+    colors.bold.green(
+      `server running at http://localhost:${API_CONFIG.PORT}/graphql`
+    )
   );
 });

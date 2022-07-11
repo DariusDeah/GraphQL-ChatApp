@@ -1,10 +1,8 @@
 import express from "express";
 import { graphqlHTTP } from "express-graphql";
-import { UserSchema } from "./User/user.index";
 import cors from "cors";
 import { COOKIE_CONFIG } from "./config";
 import cookieSession from "cookie-session";
-import { Context } from "./interfaces/Contex.interface";
 import { Schema } from "./index";
 export const app: express.Application = express();
 

@@ -29,4 +29,5 @@ class UserResolver {
     return user;
   }
 }
+
 export const userResolver: UserResolver = new UserResolver();
