@@ -2,7 +2,7 @@ import { Card } from "@mui/material";
 import { NextPage } from "next/types";
 import React from "react";
 import SignUpForm from "../components/SignUpForm/SignUpForm";
-import WelcomeSvg from "../components/ui/welcomeSvg.ui";
+import WelcomeSvg from "../components/ui/WelcomeSvg.ui";
 
 type Props = {};
 
