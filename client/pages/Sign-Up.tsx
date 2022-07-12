@@ -1,12 +1,11 @@
 import { Card } from "@mui/material";
 import { NextPage } from "next/types";
 import React from "react";
-import SignInForm from "../components/SignInForm/SignInForm";
 import SignUpForm from "../components/SignUpForm/SignUpForm";
 
-type SignInProps = {};
+type Props = {};
 
-const SignIn: NextPage = (props: SignInProps) => {
+export default function SignUp({}: Props) {
   return (
     <div
       style={{
@@ -20,15 +19,13 @@ const SignIn: NextPage = (props: SignInProps) => {
       }}
     >
       {/* <img
-        src="https://www.behance.net/gallery/97596075/Minh-ha-sach-truyn-Mt-minh-khong-co-don-/modules/563550755"
-        alt=" cool image"
-      /> */}
+            src="https://www.behance.net/gallery/97596075/Minh-ha-sach-truyn-Mt-minh-khong-co-don-/modules/563550755"
+            alt=" cool image"
+          /> */}
       <Card style={{ height: "fit-content", padding: "4rem" }}>
-        Sign In
-        <SignInForm />
+        Sign Up 👤
+        <SignUpForm />
       </Card>
     </div>
   );
-};
-
-export default SignIn;
+}

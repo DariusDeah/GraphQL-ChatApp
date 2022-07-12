@@ -1,32 +1,33 @@
-import { Button, TextField } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import Link from "next/link";
 import React from "react";
-import styles from "./SignUpForm.module.css";
-
+import styles from "./SignInForm.module.css";
 type Props = {};
 
-const SignUpForm = (props: Props) => {
+export default function SignInForm({}: Props) {
   return (
-    <div className="signup">
+    <div className={styles.signin}>
       <div
-        style={{ textAlign: "center", marginRight: "4rem", marginLeft: "4rem" }}
+        style={{
+          textAlign: "center",
+          marginLeft: "8rem",
+          marginRight: "8rem",
+        }}
       >
-        <h1>Welcome Create Account</h1>
+        <h1>Welcome Back </h1>
         <p>
-          Already a Member?
-          <Link href="/Sign-In">
-            <Button variant="text"> Sign In </Button>
+          Not a Member?
+          <Link href="/Sign-Up">
+            <Button variant="text"> Sign Up </Button>
           </Link>
         </p>
       </div>
       <form
         style={{ display: "flex", flexDirection: "column", margin: "2rem" }}
-        className={styles.signup__form}
+        className={styles.signin__form}
       >
-        <TextField variant="outlined" placeholder="name" required />
         <TextField variant="outlined" placeholder="email" required />
         <TextField variant="outlined" placeholder="password" required />
-        <TextField variant="outlined" placeholder="confirm password" required />
         <Button
           variant="contained"
           style={{
@@ -36,11 +37,9 @@ const SignUpForm = (props: Props) => {
             boxShadow: "3px 3px 1rem  #d3d2ff",
           }}
         >
-          Sign Up
+          Sign In
         </Button>
       </form>
     </div>
   );
-};
-
-export default SignUpForm;
+}
