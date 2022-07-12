@@ -30,11 +30,14 @@ function Nav({}: Props) {
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-around" }}>
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/733/733583.png"
-          alt=""
-          style={{ height: "4rem", width: "4rem" }}
-        />
+        <MenuItem>
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/733/733583.png"
+            alt=""
+            style={{ height: "4rem", width: "4rem" }}
+          />
+          <Typography variant="h4">ChatMe</Typography>
+        </MenuItem>
         <MenuItem style={{}}>
           {navItems.map((item) => (
             <NavItem name={item.name} img={item.img} />
