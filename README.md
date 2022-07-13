@@ -1,6 +1,6 @@
 # GraphQL-ChatApp
 
-FullStack chat application utilizing GraphQl and Socket.io
+FullStack chat application utilizing GraphQL and Socket.io
 
 ## Built With 
 
@@ -20,7 +20,7 @@ FullStack chat application utilizing GraphQl and Socket.io
 
 ## Getting Started
 
-### PreRequest
+### Prerequisites
 to run this project you will need 
 - node version 16 or later
   https://nodejs.org/en/
