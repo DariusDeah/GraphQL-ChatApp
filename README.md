@@ -1,6 +1,6 @@
 # GraphQL-ChatApp
 
-FullStack chat application utilizing 
+FullStack chat application utilizing GraphQl and Socket.io
 
 ## Built With 
 
