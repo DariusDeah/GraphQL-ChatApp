@@ -13,7 +13,7 @@ function FeedItemCard({ title, children }: Props) {
         {title}
       </Typography>
       <Grid
-        display="flex"
+        // display="flex"
         justifyContent="center"
         alignItems="center"
         bgcolor="background.paper"
