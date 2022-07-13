@@ -1,5 +1,5 @@
 import { SearchOffRounded, SearchRounded } from "@mui/icons-material";
-import { TextField } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 import React from "react";
 
 type Props = {};
@@ -14,7 +14,7 @@ function SearchBar({}: Props) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: "1.5rem",
+        padding: "2rem",
       }}
     >
       <SearchRounded />
