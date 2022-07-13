@@ -8,7 +8,7 @@ function ProfileCard({}: Props) {
   return (
     <FeedItemCard title="Profile">
       <Avatar />
-      <Typography>My Name</Typography>
+      {/* <Typography>My Name</Typography> */}
     </FeedItemCard>
   );
 }

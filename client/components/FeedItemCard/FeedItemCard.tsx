@@ -9,7 +9,7 @@ type Props = {
 function FeedItemCard({ title, children }: Props) {
   return (
     <>
-      <Typography variant="h4" textAlign="center" width={400}>
+      <Typography variant="h4" textAlign="center" width={400} marginY={3}>
         {title}
       </Typography>
       <Grid
@@ -20,6 +20,7 @@ function FeedItemCard({ title, children }: Props) {
         padding={1.5}
         maxWidth={400}
         paddingX={1.5}
+        borderRadius={1}
       >
         {children}
       </Grid>
