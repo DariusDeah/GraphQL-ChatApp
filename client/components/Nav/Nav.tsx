@@ -17,14 +17,17 @@ const navItems = [
   {
     name: "Home",
     img: "https://cdn-icons-png.flaticon.com/512/8026/8026483.png",
+    linkTo: "/",
   },
   {
     name: "About",
     img: "https://cdn-icons-png.flaticon.com/512/7951/7951666.png",
+    linkTo: "/about",
   },
   {
     name: "Chat",
     img: "https://cdn-icons-png.flaticon.com/512/1041/1041916.png",
+    linkTo: "/Chat",
   },
 ];
 
@@ -57,7 +60,11 @@ function Nav({}: Props) {
         <MenuItem>
           {navItems.map((item, key) => (
             <MenuItem key={key}>
-              <NavItem name={item.name} img={item.img} />
+              <NavItem
+                name={item.name}
+                img={item.img}
+                locationLink={item.linkTo}
+              />
             </MenuItem>
           ))}
         </MenuItem>
