@@ -5,6 +5,7 @@ import ChatList from "../components/ChatList/ChatList";
 import Nav from "../components/Nav/Nav";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
 import SearchBar from "../components/SearchBar/SearchBar";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 type Props = {};
 
@@ -20,9 +21,9 @@ function Chat({}: Props) {
         <Nav />
       </Grid>
 
-      <Grid container alignItems="center" marginTop={15}>
+      <Grid container alignItems="center" marginTop={15} height={60}>
         <Grid item xs={3}>
-          sidebar
+          <Sidebar />
         </Grid>
         <Grid item xs={7}>
           chat section

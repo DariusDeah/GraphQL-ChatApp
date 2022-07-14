@@ -1,4 +1,4 @@
-import { Typography, Grid } from "@mui/material";
+import { Typography, Grid, Paper } from "@mui/material";
 import React from "react";
 
 type Props = {
@@ -12,16 +12,14 @@ function FeedItemCard({ title, children }: Props) {
       <Typography variant="h4" textAlign="center" width={300} marginY={3}>
         {title}
       </Typography>
-      <Grid
-        // display="flex"
-        justifyContent="center"
-        alignItems="center"
-        bgcolor="background.paper"
-        padding={2}
-        maxWidth={350}
-        borderRadius={1}
-      >
-        {children}
+      <Grid justifyContent="center" alignItems="center" maxWidth={350}>
+        <Paper
+          style={{
+            padding: "0.7rem",
+          }}
+        >
+          {children}
+        </Paper>
       </Grid>
     </>
   );
