@@ -10,7 +10,7 @@ function SearchBar({}: Props) {
       style={{
         backgroundColor: "white",
         borderRadius: ".7rem",
-        width: "80%",
+        width: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

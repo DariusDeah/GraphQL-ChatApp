@@ -34,7 +34,6 @@ function Nav({}: Props) {
         padding: ".3rem",
         backgroundColor: "white",
         color: "black",
-        width: "100%",
         height: "fit-content",
       }}
     >
