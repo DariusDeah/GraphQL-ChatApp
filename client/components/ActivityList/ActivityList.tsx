@@ -23,14 +23,17 @@ function ActivityList({ children, activites }: Props) {
   return (
     <FeedItemCard title="Activity">
       <List>
-        {activites.map((activity) => (
+        {activites.map((activity, key) => (
           <>
             <Typography
               variant="body1"
-              padding={2}
+              padding={3}
               display="flex"
               alignItems="start"
               paddingX={5}
+              justifyContent="space-between"
+              key={key}
+              width="100%"
             >
               {activity.includes("message") ? <MarkChatUnreadIcon /> : ""}
               {activity.includes("join") ? <GroupAddIcon /> : ""}
