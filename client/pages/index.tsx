@@ -11,6 +11,7 @@ const activityItems = [
   "You were invited to join the chat ",
   "You were promoted to admin",
   "Mark has joined the chat ",
+  "you started a new conversation ",
 ];
 
 const Home: NextPage = () => {

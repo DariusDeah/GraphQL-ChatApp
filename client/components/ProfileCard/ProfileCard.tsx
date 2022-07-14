@@ -1,12 +1,4 @@
-import {
-  Avatar,
-  AvatarGroup,
-  Button,
-  Card,
-  Grid,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { Avatar, AvatarGroup, Button, Typography } from "@mui/material";
 import React from "react";
 import FeedItemCard from "../FeedItemCard/FeedItemCard";
 
