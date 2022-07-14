@@ -31,18 +31,7 @@ const Home: NextPage = () => {
       >
         <SearchBar />
       </Grid>
-      <Grid
-        container
-        justifyContent="center"
-        width="100%"
-        // style={{
-        //   marginTop: "3rem",
-        //   display: "flex",
-        //   alignItems: "start",
-        //   justifyContent: "space-around",
-        //   margin: "auto",
-        // }}
-      >
+      <Grid container justifyContent="center" width="100%">
         <Grid xs={12} md={4} item>
           <ProfileCard />
         </Grid>

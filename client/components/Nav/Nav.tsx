@@ -7,6 +7,7 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
+import { Container } from "@mui/system";
 import React from "react";
 import NavItem from "../NavItems/NavItems";
 
@@ -37,7 +38,13 @@ function Nav({}: Props) {
         height: "fit-content",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignItems: "center",
+        }}
+      >
         <MenuItem>
           <img
             src="https://cdn-icons-png.flaticon.com/512/733/733583.png"
@@ -46,20 +53,30 @@ function Nav({}: Props) {
           />
           <Typography variant="h4">ChatMe</Typography>
         </MenuItem>
-        <MenuItem style={{}}>
+
+        <MenuItem>
           {navItems.map((item, key) => (
-            <NavItem name={item.name} img={item.img} key={key} />
+            <MenuItem key={key}>
+              <NavItem name={item.name} img={item.img} />
+            </MenuItem>
           ))}
         </MenuItem>
-        <MenuItem>
+
+        <MenuItem
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "20%",
+          }}
+        >
           <Button style={{ backgroundColor: "#ecfefa", color: "green" }}>
             Online
           </Button>
           {/* <Button style={{ backgroundColor: "#EDCBCA", color: "red" }}>
             Offline
-        </Button> */}
+          </Button> */}
           <Avatar src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80" />
-          <p> {""} Josh Hayward</p>
+          <p> Josh Hayward</p>
         </MenuItem>
       </div>
     </AppBar>
