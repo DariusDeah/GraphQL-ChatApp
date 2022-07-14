@@ -15,34 +15,32 @@ const activityItems = [
 
 const Home: NextPage = () => {
   return (
-    <Grid container columnSpacing={{ xs: 2 }}>
+    <Grid container>
       <Grid item xs={12}>
         <Nav />
       </Grid>
-      <Grid
-        xs={12}
-        container
-        style={{
-          marginTop: "6rem",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <SearchBar />
+      <Grid container xs={12}>
+        <Grid
+          item
+          xs={12}
+          style={{
+            marginTop: "6rem",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <SearchBar />
+        </Grid>
       </Grid>
-      {/* <Divider color="red" /> */}
       <Grid
         container
-        rowSpacing={2}
-        columnSpacing={2}
-        style={{
-          marginTop: "1rem",
-          display: "flex",
-          alignItems: "start",
-          justifyContent: "space-around",
-          width: "84%",
-          margin: "auto",
-        }}
+        // style={{
+        //   marginTop: "3rem",
+        //   display: "flex",
+        //   alignItems: "start",
+        //   justifyContent: "space-around",
+        //   margin: "auto",
+        // }}
       >
         <Grid xs={12} md={4} item>
           <ProfileCard />
