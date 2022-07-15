@@ -42,7 +42,7 @@ function ActivityList({ children, activites }: Props) {
               {activity.includes("promote") ? <MovingIcon /> : ""}
               {activity}
             </Typography>
-            <Divider />
+            <Divider key={key} />
           </>
         ))}
       </List>

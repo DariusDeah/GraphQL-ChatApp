@@ -35,7 +35,6 @@ function Nav({}: Props) {
   return (
     <AppBar
       style={{
-        padding: ".3rem",
         backgroundColor: "white",
         color: "black",
         height: "fit-content",

@@ -1,6 +1,8 @@
 import { Container, Grid } from "@mui/material";
 import React from "react";
 import ActivityList from "../components/ActivityList/ActivityList";
+import ChatBox from "../components/ChatBox/ChatBox";
+import ChatInfo from "../components/ChatInfo/ChatInfo";
 import ChatList from "../components/ChatList/ChatList";
 import Nav from "../components/Nav/Nav";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
@@ -12,24 +14,24 @@ type Props = {};
 function Chat({}: Props) {
   return (
     <div
-      style={{
-        marginLeft: "20px",
-        marginRight: "20px",
-      }}
+    //   style={{
+    //     margin: "auto",
+    //     marginTop: "6rem",
+    //   }}
     >
       <Grid item xs={12}>
         <Nav />
       </Grid>
 
-      <Grid container alignItems="center" marginTop={15} height={60}>
-        <Grid item xs={3}>
+      <Grid container alignItems="center" justifyContent="center">
+        <Grid item xs={0} md={3}>
           <Sidebar />
         </Grid>
-        <Grid item xs={7}>
-          chat section
+        <Grid item xs={12} md={7}>
+          <ChatBox />
         </Grid>
-        <Grid item xs={2}>
-          chat info
+        <Grid item xs={0} md={2}>
+          <ChatInfo />
         </Grid>
       </Grid>
     </div>

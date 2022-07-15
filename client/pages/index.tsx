@@ -1,4 +1,4 @@
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Grow } from "@mui/material";
 import type { NextPage } from "next";
 import ActivityList from "../components/ActivityList/ActivityList";
 import ChatList from "../components/ChatList/ChatList";
@@ -33,15 +33,21 @@ const Home: NextPage = () => {
         <SearchBar />
       </Grid>
       <Grid container justifyContent="center" width="100%">
-        <Grid xs={12} md={4} item>
-          <ProfileCard />
-        </Grid>
-        <Grid xs={12} md={4} item>
-          <ActivityList activites={activityItems} />
-        </Grid>
-        <Grid xs={12} md={4} item>
-          <ChatList />
-        </Grid>
+        <Grow in appear timeout={900}>
+          <Grid xs={12} md={4} item>
+            <ProfileCard />
+          </Grid>
+        </Grow>
+        <Grow in timeout={1400}>
+          <Grid xs={12} md={4} item>
+            <ActivityList activites={activityItems} />
+          </Grid>
+        </Grow>
+        <Grow in timeout={1650}>
+          <Grid xs={12} md={4} item>
+            <ChatList />
+          </Grid>
+        </Grow>
       </Grid>
     </Container>
   );
