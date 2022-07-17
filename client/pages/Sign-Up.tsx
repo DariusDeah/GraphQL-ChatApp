@@ -1,6 +1,7 @@
 import { Card } from "@mui/material";
 import { NextPage } from "next/types";
 import React from "react";
+import Nav from "../components/Nav/Nav";
 import SignUpForm from "../components/SignUpForm/SignUpForm";
 import WelcomeSvg from "../components/ui/WelcomeSvg.ui";
 
@@ -19,6 +20,7 @@ export default function SignUp({}: Props) {
         height: "100%",
       }}
     >
+      <Nav />
       <div
         style={{
           width: "15rem",
