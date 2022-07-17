@@ -2,9 +2,17 @@ import { Avatar, AvatarGroup, Button, Typography } from "@mui/material";
 import React from "react";
 import FeedItemCard from "../FeedItemCard/FeedItemCard";
 
-type Props = {};
+type Props = {
+  userData: {
+    name: string;
+    email: string;
+    photo: string;
+    mesagesSent: number;
+    friends: string[];
+  };
+};
 
-function ProfileCard({}: Props) {
+function ProfileCard({ userData }: Props) {
   return (
     <FeedItemCard title="Profile">
       <div style={{ padding: "0rem" }}>
@@ -35,9 +43,9 @@ function ProfileCard({}: Props) {
               borderRadius: "100%",
               border: "solid 0.5rem white",
             }}
-            src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80"
+            src={userData.photo}
           />
-          <Typography variant="h4">Josh Hayward</Typography>
+          <Typography variant="h4">{userData.name}</Typography>
           <div
             style={{
               marginTop: "1rem",
@@ -46,7 +54,7 @@ function ProfileCard({}: Props) {
             }}
           >
             <Typography variant="h5">Friends</Typography>
-            <AvatarGroup max={4}>
+            <AvatarGroup max={userData.friends.length}>
               <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
               <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
               <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
@@ -65,7 +73,7 @@ function ProfileCard({}: Props) {
             }}
           >
             <Typography variant="h5">Messages Sent</Typography>
-            <Typography variant="body1">2,000</Typography>
+            <Typography variant="body1">{userData.mesagesSent}</Typography>
           </div>
           {/* only show on non current user device */}
           <Button variant="outlined">Chat With Me!</Button>

@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 
 type Props = {};
@@ -18,6 +18,11 @@ const avatars = [
     name: "Josh Avatar",
     message: "a random text",
     sentTime: "12:00pm",
+  },
+  {
+    name: "Kylie Avatar",
+    message: "typing...",
+    sentTime: "1:00pm",
   },
   {
     name: "Kylie Avatar",
@@ -48,9 +53,32 @@ const GroupChats = [
     sentTime: "2:00pm",
     members: ["Bob", "John", "Kyle"],
   },
+  {
+    name: "Friends 4 Lyfe",
+    message: "dude no way!",
+    sentTime: "2:00pm",
+    members: ["Bob", "John", "Kyle"],
+  },
+  {
+    name: "Cool Kidz",
+    message: "dude no way!",
+    sentTime: "2:00pm",
+    members: ["Bob", "John", "Kyle"],
+  },
+  {
+    name: "Bailey,Amy,Ross +2",
+    message: "yeah sounds like a good plan",
+    sentTime: "2:00pm",
+    members: ["Bob", "John", "Kyle"],
+  },
 ];
-
 function Sidebar({}: Props) {
+  const [messages, setMessages] = useState(avatars);
+  function filterMessages(e: any) {
+    setMessages(
+      avatars.filter((message) => message.name.includes(e.target.value))
+    );
+  }
   return (
     <div
       style={{
@@ -58,17 +86,18 @@ function Sidebar({}: Props) {
         borderRight: "solid lightgray 2px",
         backgroundColor: "white",
         height: "100vh",
+        overflow: "auto",
       }}
     >
       <div style={{ marginBottom: "1rem", marginTop: "6rem" }}>
-        <SearchBar />
+        <SearchBar onChange={(e) => filterMessages(e)} />
         <Typography variant="h5">
           Conversations({avatars.length + GroupChats.length})
         </Typography>
       </div>
 
       <div>
-        {avatars.map((avatar, key) => (
+        {messages.map((avatar, key) => (
           <Card style={{ marginBottom: "1rem" }}>
             <div
               style={{

@@ -5,6 +5,7 @@ import ChatList from "../components/ChatList/ChatList";
 import Nav from "../components/Nav/Nav";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
 import SearchBar from "../components/SearchBar/SearchBar";
+import { state } from "../MockState";
 
 const activityItems = [
   "New message from chat",
@@ -13,7 +14,7 @@ const activityItems = [
   "Mark has joined the chat ",
   "you started a new conversation ",
 ];
-
+const user = state.user;
 const Home: NextPage = () => {
   return (
     <Container>
@@ -35,7 +36,7 @@ const Home: NextPage = () => {
       <Grid container justifyContent="center" width="100%">
         <Grow in appear timeout={900}>
           <Grid xs={12} md={4} item>
-            <ProfileCard />
+            <ProfileCard userData={user} />
           </Grid>
         </Grow>
         <Grow in timeout={1400}>

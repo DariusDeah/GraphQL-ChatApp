@@ -2,9 +2,11 @@ import { SearchOffRounded, SearchRounded } from "@mui/icons-material";
 import { Grid, TextField } from "@mui/material";
 import React from "react";
 
-type Props = {};
+type Props = {
+  onChange?: (value: any) => void;
+};
 
-function SearchBar({}: Props) {
+function SearchBar({ onChange }: Props) {
   return (
     <div
       style={{
@@ -18,7 +20,12 @@ function SearchBar({}: Props) {
       }}
     >
       <SearchRounded />
-      <TextField variant="standard" placeholder="Search..." fullWidth />
+      <TextField
+        variant="standard"
+        placeholder="Search..."
+        fullWidth
+        onChange={onChange}
+      />
     </div>
   );
 }
