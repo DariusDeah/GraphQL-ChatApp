@@ -14,7 +14,9 @@ const activityItems = [
   "Mark has joined the chat ",
   "you started a new conversation ",
 ];
-const user = state.user;
+
+const user = state.account;
+
 const Home: NextPage = () => {
   return (
     <Container>
