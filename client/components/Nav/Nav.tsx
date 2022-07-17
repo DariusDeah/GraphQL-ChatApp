@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
+import { Login_Status_Time_Range } from "../../config";
+import { state } from "../../MockState";
 import NavItem from "../NavItems/NavItems";
 
 type Props = {};
@@ -32,6 +34,7 @@ const navItems = [
 ];
 
 function Nav({}: Props) {
+  const user = state.account;
   return (
     <AppBar
       style={{
@@ -75,14 +78,17 @@ function Nav({}: Props) {
             width: "20%",
           }}
         >
-          <Button style={{ backgroundColor: "#ecfefa", color: "green" }}>
-            Online
-          </Button>
-          {/* <Button style={{ backgroundColor: "#EDCBCA", color: "red" }}>
-            Offline
-          </Button> */}
-          <Avatar src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=989&q=80" />
-          <p> Josh Hayward</p>
+          {user.lastLoginAt >= Login_Status_Time_Range ? (
+            <Button style={{ backgroundColor: "#ecfefa", color: "green" }}>
+              Online
+            </Button>
+          ) : (
+            <Button style={{ backgroundColor: "#EDCBCA", color: "red" }}>
+              Offline
+            </Button>
+          )}
+          <Avatar src={user.photo} />
+          <p> {user.name}</p>
         </MenuItem>
       </div>
     </AppBar>

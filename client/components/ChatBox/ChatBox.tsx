@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { SetStateAction, useEffect, useState } from "react";
-import MessageBox from "../../Message/Message";
+import MessageBox from "../Message/Message";
 
 type Props = {};
 
