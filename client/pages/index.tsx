@@ -1,10 +1,13 @@
-import { Container, Grid, Grow } from "@mui/material";
+import { useQuery } from "@apollo/client";
+import { Button, Container, Grid, Grow } from "@mui/material";
 import type { NextPage } from "next";
+import { useEffect } from "react";
 import ActivityList from "../components/ActivityList/ActivityList";
 import ChatList from "../components/ChatList/ChatList";
 import Nav from "../components/Nav/Nav";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
 import SearchBar from "../components/SearchBar/SearchBar";
+import { findUsers } from "../graphql/user.graphql";
 import { state } from "../MockState";
 
 const activityItems = [
@@ -18,6 +21,12 @@ const activityItems = [
 const user = state.account;
 
 const Home: NextPage = () => {
+  const { data, loading, error } = useQuery(findUsers, {
+    variables: { name: "happy chatter" },
+  });
+  if (data) {
+    console.log({ data });
+  }
   return (
     <Container>
       <Grid item xs={12}>
@@ -52,6 +61,7 @@ const Home: NextPage = () => {
           </Grid>
         </Grow>
       </Grid>
+      <Button onClick={() => console.log(data)}>Grapql test</Button>
     </Container>
   );
 };
