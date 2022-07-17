@@ -19,7 +19,7 @@ export class UserService {
   }
 
   async findUsers(name: string, context: any) {
-    const users = await UserModel.find({ name: name });
+    const users = await UserModel.find({ name: name }).select("name email id");
     if (users.length === 0) {
       throw new NotFoundError(`User ${name} not found`);
     }
