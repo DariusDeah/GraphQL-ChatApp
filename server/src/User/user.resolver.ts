@@ -28,6 +28,10 @@ class UserResolver {
     const user = await this.userService.login(input);
     return user;
   }
+  async findUsers(name: any, context: any): Promise<User[]> {
+    const users = await this.userService.findUsers(name, context);
+    return users;
+  }
 }
 
 export const userResolver: UserResolver = new UserResolver();

@@ -21,6 +21,14 @@ export class UserService {
     return createdUser;
   }
 
+  async findUsers(name: any, context: any) {
+    const users = await UserModel.find({ name: name });
+    if (users.length === 0) {
+      throw new NotFoundError(`User ${name} not found`);
+    }
+    return users;
+  }
+
   async findByID(id: string): Promise<HydratedDocument<User>> {
     const user = await UserModel.findById(id);
     if (!user) {
