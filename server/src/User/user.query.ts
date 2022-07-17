@@ -1,5 +1,5 @@
 import { GraphQLID, GraphQLString } from "graphql";
-import { GraphQLObjectType } from "graphql/type/definition";
+import { GraphQLList, GraphQLObjectType } from "graphql/type/definition";
 import { Context } from "../interfaces/Contex.interface";
 import { userResolver } from "./user.resolver";
 import { UserType } from "./user.type";
@@ -21,7 +21,7 @@ export const UserRootQuery = new GraphQLObjectType({
       },
     },
     users: {
-      type: UserType,
+      type: GraphQLList(UserType),
       args: { name: { type: GraphQLString } },
       async resolve(parent, args, context) {
         try {

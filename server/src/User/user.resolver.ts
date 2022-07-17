@@ -28,7 +28,7 @@ class UserResolver {
     const user = await this.userService.login(input);
     return user;
   }
-  async findUsers(name: any, context: any): Promise<User[]> {
+  async findUsers(name: string, context: any): Promise<User[]> {
     const users = await this.userService.findUsers(name, context);
     return users;
   }

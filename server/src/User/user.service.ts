@@ -1,11 +1,8 @@
-import { GraphQLError } from "graphql";
-import mongoose, { HydratedDocument } from "mongoose";
+import { HydratedDocument } from "mongoose";
 import { User, UserModel } from "./user.model";
 import { fieldsHider } from "../helpers/fieldsHider";
 import bcrypt from "bcrypt";
-import { v4 as uuid } from "uuid";
 import { BadRequestError, NotFoundError } from "../utils/Errors";
-import * as MUUID from "uuid-mongodb";
 
 export class UserService {
   async createUser(input: {
@@ -21,7 +18,7 @@ export class UserService {
     return createdUser;
   }
 
-  async findUsers(name: any, context: any) {
+  async findUsers(name: string, context: any) {
     const users = await UserModel.find({ name: name });
     if (users.length === 0) {
       throw new NotFoundError(`User ${name} not found`);
