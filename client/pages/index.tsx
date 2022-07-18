@@ -4,6 +4,7 @@ import type { NextPage } from "next";
 import { useEffect } from "react";
 import ActivityList from "../components/ActivityList/ActivityList";
 import ChatList from "../components/ChatList/ChatList";
+import FeedItem from "../components/FeedItem/FeedItem";
 import Nav from "../components/Nav/Nav";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
 import SearchBar from "../components/SearchBar/SearchBar";
@@ -36,17 +37,23 @@ const Home: NextPage = () => {
       >
         <Grow in appear timeout={900}>
           <Grid xs={12} md={4} item>
-            <ProfileCard userData={user} />
+            <FeedItem title="Profile">
+              <ProfileCard userData={user} />
+            </FeedItem>
           </Grid>
         </Grow>
         <Grow in timeout={1400}>
           <Grid xs={12} md={4} item>
-            <ActivityList activites={activityItems} />
+            <FeedItem title="Activity">
+              <ActivityList activites={activityItems} />
+            </FeedItem>
           </Grid>
         </Grow>
         <Grow in timeout={1650}>
           <Grid xs={12} md={4} item>
-            <ChatList />
+            <FeedItem title="Chats">
+              <ChatList />
+            </FeedItem>
           </Grid>
         </Grow>
       </Grid>

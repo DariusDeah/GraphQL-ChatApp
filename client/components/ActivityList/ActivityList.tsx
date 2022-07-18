@@ -22,33 +22,31 @@ type Props = {
 
 function ActivityList({ children, activites }: Props) {
   return (
-    <FeedItem title="Activity">
-      <Card>
-        <List>
-          {activites.map((activity, key) => (
-            <>
-              <Typography
-                variant="body1"
-                display="flex"
-                marginY={4}
-                alignItems="start"
-                paddingX={1}
-                justifyContent="space-around"
-                key={key}
-                width="100%"
-              >
-                {activity.includes("message") ? <MarkChatUnreadIcon /> : ""}
-                {activity.includes("conversation") ? <ChatRounded /> : ""}
-                {activity.includes("join") ? <GroupAddIcon /> : ""}
-                {activity.includes("promote") ? <MovingIcon /> : ""}
-                {activity}
-              </Typography>
-              <Divider key={key} />
-            </>
-          ))}
-        </List>
-      </Card>
-    </FeedItem>
+    <Card>
+      <List>
+        {activites.map((activity, key) => (
+          <>
+            <Typography
+              variant="body1"
+              display="flex"
+              marginY={4}
+              alignItems="start"
+              paddingX={1}
+              justifyContent="space-around"
+              key={key}
+              width="100%"
+            >
+              {activity.includes("message") ? <MarkChatUnreadIcon /> : ""}
+              {activity.includes("conversation") ? <ChatRounded /> : ""}
+              {activity.includes("join") ? <GroupAddIcon /> : ""}
+              {activity.includes("promote") ? <MovingIcon /> : ""}
+              {activity}
+            </Typography>
+            <Divider key={key} />
+          </>
+        ))}
+      </List>
+    </Card>
   );
 }
 
