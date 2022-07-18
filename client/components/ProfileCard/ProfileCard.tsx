@@ -1,6 +1,6 @@
 import { Avatar, AvatarGroup, Button, Card, Typography } from "@mui/material";
 import React from "react";
-import FeedItemCard from "../FeedItemCard/FeedItemCard";
+import FeedItem from "../FeedItem/FeedItem";
 
 type Props = {
   userData: {
@@ -14,7 +14,7 @@ type Props = {
 
 function ProfileCard({ userData }: Props) {
   return (
-    <FeedItemCard title="Profile">
+    <FeedItem title="Profile">
       <Card>
         <div style={{ padding: "0rem" }}>
           <img
@@ -97,7 +97,7 @@ function ProfileCard({ userData }: Props) {
           </div>
         </div>
       </Card>
-    </FeedItemCard>
+    </FeedItem>
   );
 }
 

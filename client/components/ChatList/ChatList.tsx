@@ -7,12 +7,13 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { borderRadius } from "@mui/system";
-import FeedItemCard from "../FeedItemCard/FeedItemCard";
+import FeedItem from "../FeedItem/FeedItem";
+import Card from "@mui/material/Card";
 
 export default function ChatList() {
   return (
-    <FeedItemCard title="Chats">
-      <div>
+    <FeedItem title="Chats">
+      <Card>
         <List>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
@@ -83,7 +84,7 @@ export default function ChatList() {
             />
           </ListItem>
         </List>
-      </div>
-    </FeedItemCard>
+      </Card>
+    </FeedItem>
   );
 }
