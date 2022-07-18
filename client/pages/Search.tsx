@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import Nav from "../components/Nav/Nav";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
@@ -41,6 +41,7 @@ function Search({}: Props) {
               <ProfileCard userData={user} key={user._id} />
             </Grid>
           ))}
+        {loading && <Typography variant="h4">Loading...</Typography>}
       </Grid>
     </Container>
   );

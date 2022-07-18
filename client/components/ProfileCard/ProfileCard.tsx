@@ -7,8 +7,8 @@ type Props = {
     name: string;
     email: string;
     photo?: string;
-    messagesSent?: number;
     friends?: string[];
+    bio: string;
   };
 };
 
@@ -78,11 +78,11 @@ function ProfileCard({ userData }: Props) {
               textAlign: "center",
             }}
           >
-            <Typography variant="h5">Messages Sent</Typography>
-            {userData.messagesSent ? (
-              <Typography variant="body1">{userData.messagesSent}</Typography>
+            <Typography variant="h5">Bio:</Typography>
+            {userData.bio ? (
+              <Typography variant="body1">{userData.bio}</Typography>
             ) : (
-              <Typography>No messages sent yet</Typography>
+              <Typography>{userData.name}No Bio</Typography>
             )}
           </div>
           {/* only show on non current user device */}
