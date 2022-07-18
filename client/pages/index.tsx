@@ -21,12 +21,6 @@ const activityItems = [
 const user = state.account;
 
 const Home: NextPage = () => {
-  const { data, loading, error } = useQuery(findUsers, {
-    variables: { name: "happy chatter" },
-  });
-  if (data) {
-    console.log({ data });
-  }
   return (
     <Container>
       <Grid item xs={12}>
@@ -34,17 +28,12 @@ const Home: NextPage = () => {
       </Grid>
 
       <Grid
-        item
-        xs={12}
-        style={{
-          marginTop: "6rem",
-          display: "flex",
-          justifyContent: "center",
-        }}
+        container
+        justifyContent="center"
+        width="100%"
+        alignItems="start"
+        marginTop={12}
       >
-        <SearchBar />
-      </Grid>
-      <Grid container justifyContent="center" width="100%">
         <Grow in appear timeout={900}>
           <Grid xs={12} md={4} item>
             <ProfileCard userData={user} />
@@ -61,7 +50,6 @@ const Home: NextPage = () => {
           </Grid>
         </Grow>
       </Grid>
-      <Button onClick={() => console.log(data)}>Grapql test</Button>
     </Container>
   );
 };
