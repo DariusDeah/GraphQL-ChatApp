@@ -11,7 +11,7 @@ export interface IUser {
 export const UserType = new GraphQLObjectType<IUser>({
   name: "user",
   fields: () => ({
-    id: { type: GraphQLID },
+    _id: { type: GraphQLID },
     name: { type: GraphQLString! },
     email: { type: GraphQLString! },
     googleId: { type: GraphQLString },
