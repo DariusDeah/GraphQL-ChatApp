@@ -58,6 +58,7 @@ export default function SignInForm({ onSubmit }: Props) {
         />
         <Button
           variant="contained"
+          type="submit"
           style={{
             padding: ".7rem",
             backgroundColor: "#5452ff",
