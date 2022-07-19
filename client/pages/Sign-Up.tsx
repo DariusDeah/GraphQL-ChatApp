@@ -7,7 +7,17 @@ import WelcomeSvg from "../components/ui/WelcomeSvg.ui";
 
 type Props = {};
 
+type formData = {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
 export default function SignUp({}: Props) {
+  const handleSignup = (signupFormData: formData) => {
+    console.log(signupFormData);
+  };
   return (
     <div
       style={{
@@ -37,7 +47,7 @@ export default function SignUp({}: Props) {
           /> */}
       <Card style={{ height: "fit-content", padding: "4rem" }}>
         Sign Up 👤
-        <SignUpForm />
+        <SignUpForm onSubmit={handleSignup} />
       </Card>
     </div>
   );

@@ -1,11 +1,42 @@
 import { Button, TextField } from "@mui/material";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./SignUpForm.module.css";
 
-type Props = {};
+type Props = {
+  onSubmit: any;
+};
 
-const SignUpForm = (props: Props) => {
+const SignUpForm = ({ onSubmit }: Props) => {
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const confirmPasswordRef = useRef<HTMLInputElement>(null);
+
+  const handleFormSubmit = (e: any) => {
+    e.preventDefault();
+    if (
+      !nameRef.current ||
+      !emailRef.current ||
+      !passwordRef.current ||
+      !confirmPasswordRef.current
+    ) {
+      throw new Error(`Invalid values`);
+    }
+
+    if (passwordRef.current.value !== confirmPasswordRef.current.value) {
+      throw new Error("passwords must match ");
+    }
+
+    const userData = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      confirmPassword: confirmPasswordRef.current.value,
+    };
+    onSubmit(userData);
+  };
+
   return (
     <div className="signup">
       <div
@@ -22,11 +53,32 @@ const SignUpForm = (props: Props) => {
       <form
         style={{ display: "flex", flexDirection: "column", margin: "2rem" }}
         className={styles.signup__form}
+        onSubmit={handleFormSubmit}
       >
-        <TextField variant="outlined" placeholder="name" required />
-        <TextField variant="outlined" placeholder="email" required />
-        <TextField variant="outlined" placeholder="password" required />
-        <TextField variant="outlined" placeholder="confirm password" required />
+        <TextField
+          variant="outlined"
+          placeholder="name"
+          required
+          inputRef={nameRef}
+        />
+        <TextField
+          variant="outlined"
+          placeholder="email"
+          required
+          inputRef={emailRef}
+        />
+        <TextField
+          variant="outlined"
+          placeholder="password"
+          required
+          inputRef={passwordRef}
+        />
+        <TextField
+          variant="outlined"
+          placeholder="confirm password"
+          required
+          inputRef={confirmPasswordRef}
+        />
         <Button
           variant="contained"
           style={{
@@ -35,6 +87,7 @@ const SignUpForm = (props: Props) => {
             marginTop: "1rem",
             boxShadow: "3px 3px 1rem  #d3d2ff",
           }}
+          type="submit"
         >
           Sign Up
         </Button>
