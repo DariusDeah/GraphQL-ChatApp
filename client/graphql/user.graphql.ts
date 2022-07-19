@@ -13,6 +13,7 @@ export const findUsers = gql`
 export const createUser = gql`
   mutation createUser($name: String, $email: String, $password: String) {
     createUser(name: $name, email: $email, password: $password) {
+      _id
       name
       email
       password

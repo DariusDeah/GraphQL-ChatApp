@@ -1,9 +1,11 @@
+import { useMutation, useQuery } from "@apollo/client";
 import { Card } from "@mui/material";
 import { NextPage } from "next/types";
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../components/Nav/Nav";
 import SignUpForm from "../components/SignUpForm/SignUpForm";
 import WelcomeSvg from "../components/ui/WelcomeSvg.ui";
+import { createUser } from "../graphql/user.graphql";
 
 type Props = {};
 
@@ -15,9 +17,19 @@ type formData = {
 };
 
 export default function SignUp({}: Props) {
+  const [createUserMutation, { data, loading, error }] =
+    useMutation(createUser);
+
   const handleSignup = (signupFormData: formData) => {
-    console.log(signupFormData);
+    createUserMutation({
+      variables: {
+        name: signupFormData.name,
+        email: signupFormData.email,
+        password: signupFormData.password,
+      },
+    });
   };
+
   return (
     <div
       style={{
