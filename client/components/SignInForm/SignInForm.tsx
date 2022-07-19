@@ -1,10 +1,27 @@
 import { TextField, Button } from "@mui/material";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./SignInForm.module.css";
-type Props = {};
+type Props = {
+  onSubmit: any;
+};
 
-export default function SignInForm({}: Props) {
+export default function SignInForm({ onSubmit }: Props) {
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  const handleFormSubmit = (e: any) => {
+    e.preventDefault();
+    if (!emailRef.current || !passwordRef.current) {
+      throw new Error("Please enter a valid email and password");
+    }
+    const userData = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+    onSubmit(userData);
+  };
+
   return (
     <div className={styles.signin}>
       <div
@@ -25,9 +42,20 @@ export default function SignInForm({}: Props) {
       <form
         style={{ display: "flex", flexDirection: "column", margin: "2rem" }}
         className={styles.signin__form}
+        onSubmit={handleFormSubmit}
       >
-        <TextField variant="outlined" placeholder="email" required />
-        <TextField variant="outlined" placeholder="password" required />
+        <TextField
+          variant="outlined"
+          placeholder="email"
+          required
+          inputRef={emailRef}
+        />
+        <TextField
+          variant="outlined"
+          placeholder="password"
+          required
+          inputRef={passwordRef}
+        />
         <Button
           variant="contained"
           style={{
