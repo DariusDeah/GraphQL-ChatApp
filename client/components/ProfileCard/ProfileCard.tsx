@@ -82,7 +82,7 @@ function ProfileCard({ userData }: Props) {
             {userData.bio ? (
               <Typography variant="body1">{userData.bio}</Typography>
             ) : (
-              <Typography>{userData.name}No Bio</Typography>
+              <Typography>{userData.name} has no bio yet </Typography>
             )}
           </div>
           {/* only show on non current user device */}

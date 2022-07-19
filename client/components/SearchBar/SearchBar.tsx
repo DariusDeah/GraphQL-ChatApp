@@ -1,32 +1,47 @@
 import { SearchOffRounded, SearchRounded } from "@mui/icons-material";
-import { Grid, TextField } from "@mui/material";
-import React from "react";
+import { Button, Grid, TextField } from "@mui/material";
+import React, { FormEvent, useRef } from "react";
 
 type Props = {
-  onChange?: (value: any) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: any;
 };
 
-function SearchBar({ onChange }: Props) {
+function SearchBar({ onChange, onSubmit }: Props) {
+  const searchRef = useRef<HTMLInputElement>(null);
+  const submitHandler = (e: any) => {
+    e.preventDefault();
+    if (!searchRef.current) {
+      throw new Error("Search inputTypes  cannot be null");
+    }
+
+    onSubmit(searchRef.current.value);
+  };
+
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        borderRadius: ".7rem",
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "2rem",
-      }}
-    >
-      <SearchRounded />
-      <TextField
-        variant="standard"
-        placeholder="Search..."
-        fullWidth
-        onChange={onChange}
-      />
-    </div>
+    <form onSubmit={submitHandler}>
+      <div
+        style={{
+          backgroundColor: "white",
+          borderRadius: ".7rem",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "2rem",
+        }}
+      >
+        <SearchRounded />
+        <TextField
+          id="search"
+          variant="standard"
+          placeholder="Search..."
+          fullWidth
+          inputRef={searchRef}
+        />
+        <Button type="submit">Search</Button>
+      </div>
+    </form>
   );
 }
 
