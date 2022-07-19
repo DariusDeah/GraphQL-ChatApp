@@ -45,7 +45,12 @@ function Search({}: Props) {
             </Grid>
           ))}
         {loading && <Typography variant="h4">Loading...</Typography>}
-        {error && <Typography variant="h4">{name} was not found</Typography>}
+        {/* if and error occured and there was a name inputed */}
+        {error && name.length ? (
+          <Typography variant="h4">{name} was not found</Typography>
+        ) : (
+          <Typography variant="h6">enter a users name to find them</Typography>
+        )}
       </Grid>
     </Container>
   );
